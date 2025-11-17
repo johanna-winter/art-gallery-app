@@ -23,7 +23,8 @@ export default function Spotlight() {
         src={randomArtPiece.imageSource}
         alt={randomArtPiece.name}
         width={400}
-        height={400}
+        height={500}
+        priority={true}
       ></Image>
       <h3>{randomArtPiece.artist}</h3>
       <p>
