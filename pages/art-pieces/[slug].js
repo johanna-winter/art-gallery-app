@@ -20,7 +20,7 @@ export default function ArtPieceDetail() {
   if (isLoading) return <div>Loading...</div>;
   if (!artPieces) return <div>No data available</div>;
 
-  const ArtPiece = artPieces.find((piece) => piece.slug === slug);
+  const ArtPiece = artPieces.find((ArtPiece) => ArtPiece.slug === slug);
  
   if (!ArtPiece) {
     return <div>Art piece not found</div>;
