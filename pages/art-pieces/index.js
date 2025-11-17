@@ -1,22 +1,30 @@
-import { useRouter } from "next/router";
+import Image from "next/image";
 import useSWR from "swr";
 
-export default function ArtPiece({ fetcher }) {
-  const { data: artPieces } = useSWR(
-    "https://example-apis.vercel.app/api/art",
-    fetcher
+export default function ArtPieces() {
+  const { data: artPieces, error } = useSWR(
+    "https://example-apis.vercel.app/api/art"
   );
   console.log("Art Pieces Log: ", artPieces);
 
-  const router = useRouter();
-  const { slug } = router.query;
-  console.log(router.query);
-
-  //   const currentArtPiece = artPieces.find((artpiece) => artpiece.slug === artPieces.slug);
+  if (error) return <div>Failed to load</div>;
+  if (!artPieces) return <div>Loading...</div>;
 
   return (
     <ul>
-      <li>Art piece</li>
+      {artPieces.map((artPiece) => (
+        <li key={artPiece.slug}>
+          <h4>{artPiece.name}</h4>
+          <p>{artPiece.artist}</p>
+          <Image
+            src={artPiece.imageSource}
+            alt={artPiece.name}
+            width={300}
+            height={300}
+          ></Image>
+        </li>
+      ))}
+      {/* <li>Art piece</li> */}
     </ul>
   );
 }
