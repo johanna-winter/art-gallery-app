@@ -1,5 +1,6 @@
 import Image from "next/image";
 import useSWR from "swr";
+import Link from "next/link";
 
 export default function ArtPieces() {
   const { data: artPieces, error } = useSWR(
@@ -16,12 +17,14 @@ export default function ArtPieces() {
         <li key={artPiece.slug}>
           <h4>{artPiece.name}</h4>
           <p>{artPiece.artist}</p>
+        <Link href={`/art-pieces/${artPiece.slug}`}>
           <Image
             src={artPiece.imageSource}
             alt={artPiece.name}
             width={300}
             height={300}
           ></Image>
+          </Link>
         </li>
       ))}
       {/* <li>Art piece</li> */}

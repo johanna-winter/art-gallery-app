@@ -30,6 +30,9 @@ export default function ArtPieceDetail() {
 
   return (
     <>
+    <Link href="/art-pieces">
+      <button>Zurück</button>
+    </Link>
       <div>
         <Image
           src={imageSource}
