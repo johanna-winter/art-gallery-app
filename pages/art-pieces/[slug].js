@@ -62,7 +62,7 @@ export default function ArtPieceDetail() {
         />
       </div>
       <div>
-        <ColorPalette colors={colors}   //komponente wird an colors übergeben(von ArtPiece),  über Props Attribut colors={colors}
+        <ColorPalette colors{colors}   //komponente wird an colors übergeben(von ArtPiece),  über Props Attribut colors={colors}
         />    
         <h2>{name}</h2>
        <br></br>
