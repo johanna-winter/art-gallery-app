@@ -5,6 +5,7 @@ import useSWR from "swr";
 import CommentInputForm from "@/components/Comments/CommentsInput";
 import CommentOutput from "@/components/Comments/CommentsOutput";
 import { useState } from "react";
+import ColorPalette from "@/components/ColorPalette";
 
 
 
@@ -38,7 +39,7 @@ export default function ArtPieceDetail() {
   }
 
 
-  const { name, imageSource, artist, year, genre } = ArtPiece;
+  const { name, imageSource, artist, year, genre, colors } = ArtPiece;
 
   return (
     <>
@@ -54,6 +55,7 @@ export default function ArtPieceDetail() {
         />
       </div>
       <div>
+        <ColorPalette colors={colors} />
         <h2>{name}</h2>
        <br></br>
        <p>{artist}</p>
