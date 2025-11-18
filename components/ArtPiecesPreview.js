@@ -17,7 +17,7 @@ export default function ArtPiecesPreview({
       <h4>{title}</h4>
       <p>{artist}</p>
       <Link href={`/art-pieces/${slug}`}>
-        <Image src={image} alt={title} width={300} height={300}></Image>
+        <Image src={image} alt={title} width={300} height={300} />
       </Link>
       <FavoriteButton
         slug={slug}

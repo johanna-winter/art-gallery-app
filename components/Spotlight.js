@@ -1,21 +1,18 @@
 import Image from "next/image";
-import useSWR from "swr";
+import FavoriteButton from "./FavoriteButton";
 
-export default function Spotlight() {
-  const { data: artPieces, error } = useSWR(
-    "https://example-apis.vercel.app/api/art"
-  );
-  console.log("Art Pieces Log: ", artPieces);
-
-  if (error) return <div>Failed to load</div>;
-  if (!artPieces) return <div>Loading...</div>;
+export default function Spotlight({ artPieces, favoritesData, onToggle }) {
+  if (!artPieces || artPieces.length === 0) return null;
 
   function getRandomElement(array) {
     return array[Math.floor(Math.random() * array.length)];
   }
 
   const randomArtPiece = getRandomElement(artPieces);
-  console.log(randomArtPiece);
+
+  const slug = randomArtPiece.slug;
+  const isFavorite = favoritesData.includes(slug);
+
   return (
     <>
       <h1>Art Gallery</h1>
@@ -26,6 +23,11 @@ export default function Spotlight() {
         height={500}
         priority={true}
       ></Image>
+      <FavoriteButton
+        slug={slug}
+        onToggle={() => onToggle(slug)}
+        isFavorite={isFavorite}
+      />
       <h3>{randomArtPiece.artist}</h3>
       <p>
         <i>&quot;{randomArtPiece.name}&quot;</i>

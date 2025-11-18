@@ -1,6 +1,6 @@
 import GlobalStyle from "../styles";
 import useSWR, { SWRConfig } from "swr";
-import Navigation from "@/components/Link";
+import Navigation from "@/components/Navigation";
 import { useState } from "react";
 
 async function fetcher(url) {
@@ -22,8 +22,6 @@ export default function App({ Component, pageProps }) {
       prev.includes(slug) ? prev.filter((fav) => fav !== slug) : [...prev, slug]
     );
   }
-
-  console.log("App Log: ", artPieces);
 
   if (error) return <div>Failed to load</div>;
   if (!artPieces) return null;
