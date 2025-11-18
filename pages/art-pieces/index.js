@@ -1,9 +1,10 @@
-import Preview from "@/components/Preview";
+import ArtPiecesList from "@/components/ArtPiecesList";
+import ArtPiecesPreview from "@/components/ArtPiecesPreview";
 
-export default function ArtPieces() {
+export default function ArtPieces({ artPieces }) {
   return (
-    <ul>
-      <Preview />
-    </ul>
+    <>
+      <ArtPiecesList artPieces={artPieces} />
+    </>
   );
 }

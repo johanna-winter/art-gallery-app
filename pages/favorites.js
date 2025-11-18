@@ -1,5 +1,5 @@
 import FavoriteButton from "@/components/FavoriteButton";
-import Preview from "@/components/Preview";
+import Preview from "@/components/ArtPiecesPreview";
 import Image from "next/image";
 import ArtPieces from "./art-pieces";
 
