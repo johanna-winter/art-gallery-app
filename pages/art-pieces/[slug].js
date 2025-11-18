@@ -2,6 +2,7 @@ import { useRouter } from "next/router";
 import Link from "next/link";
 import Image from "next/image";
 import useSWR from "swr";
+import CommentInputForm from "@/components/Comments/CommentsInput";
 
 
 export default function ArtPieceDetail() {
@@ -47,6 +48,12 @@ export default function ArtPieceDetail() {
        <p>{artist}</p>
       </div>
       <div>{year}, {genre}</div>
+      <br>
+      </br>
+      <section>
+        <p>Comments</p>
+      </section>
+      <CommentInputForm></CommentInputForm>
     </>
   );
 }
