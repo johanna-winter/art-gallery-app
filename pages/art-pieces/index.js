@@ -1,10 +1,13 @@
 import ArtPiecesList from "@/components/ArtPiecesList";
-import ArtPiecesPreview from "@/components/ArtPiecesPreview";
 
-export default function ArtPieces({ artPieces }) {
+export default function ArtPieces({ artPieces, onToggle, favoritesData }) {
   return (
     <>
-      <ArtPiecesList artPieces={artPieces} />
+      <ArtPiecesList
+        artPieces={artPieces}
+        onToggle={onToggle}
+        favoritesData={favoritesData}
+      />
     </>
   );
 }

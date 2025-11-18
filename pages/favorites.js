@@ -1,7 +1,6 @@
 import FavoriteButton from "@/components/FavoriteButton";
-import Preview from "@/components/ArtPiecesPreview";
-import Image from "next/image";
 import ArtPieces from "./art-pieces";
+import ArtPiecesPreview from "@/components/ArtPiecesPreview";
 
 export default function FavoritesList({ onToggle, artPieces, favoritesData }) {
   const onlyFavoriteArtPieces = favoritesData.filter(
@@ -12,23 +11,25 @@ export default function FavoritesList({ onToggle, artPieces, favoritesData }) {
   const favoriteArtPiecesList = artPieces.filter((artpiece) =>
     favoriteSlugs.includes(artpiece.slug)
   );
+
   return (
     <>
-      <FavoriteButton />
-      <ArtPieces onToggle={onToggle} favorites={favoriteArtPiecesList} />
-      {/* {artPieces.map((artPiece) => (
-        <li key={artPiece.slug}>
-          <h4>{artPiece.name}</h4>
-          <p>{artPiece.artist}</p>
-          <Image
-            src={artPiece.imageSource}
-            alt={artPiece.name}
-            width={300}
-            height={300}
-          ></Image>
-        </li>
-      ))} */}
+      <ul>
+        {favoriteArtPiecesList.map((artpiece) => {
+          return (
+            <li key={artpiece.slug}>
+              <ArtPiecesPreview
+                artist={artpiece.artist}
+                title={artpiece.name}
+                image={artpiece.image}
+                slug={artpiece.slug}
+                onToggle={onToggle}
+                favorites={favoritesData}
+              />
+            </li>
+          );
+        })}
+      </ul>
     </>
   );
-  // <FavoriteButton onToggle={onToggle} />;
 }
