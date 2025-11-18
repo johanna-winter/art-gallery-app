@@ -1,14 +1,25 @@
 import Image from "next/image";
 import FavoriteButton from "./FavoriteButton";
+import { useEffect, useState } from "react";
 
 export default function Spotlight({ artPieces, favoritesData, onToggle }) {
-  if (!artPieces || artPieces.length === 0) return null;
+  //local state for randomArtPiece to not re-render everytime we use the favorites toggle
+  const [randomArtPiece, setRandomArtPiece] = useState(null);
 
-  function getRandomElement(array) {
-    return array[Math.floor(Math.random() * array.length)];
-  }
+  useEffect(() => {
+    if (artPieces?.length > 0) {
+      setRandomArtPiece(
+        artPieces[Math.floor(Math.random() * artPieces.length)]
+      );
+    }
+  }, [artPieces]);
 
-  const randomArtPiece = getRandomElement(artPieces);
+  if (!randomArtPiece || artPieces.length === 0) return null;
+
+  // const randomArtPiece = getRandomElement(artPieces);
+  // function getRandomElement(array) {
+  //   return array[Math.floor(Math.random() * array.length)];
+  // }
 
   const slug = randomArtPiece.slug;
   const isFavorite = favoritesData.includes(slug);
