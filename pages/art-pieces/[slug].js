@@ -2,6 +2,7 @@ import { useRouter } from "next/router";
 import Link from "next/link";
 import Image from "next/image";
 import useSWR from "swr";
+import ColorPalette from "@/components/FarbPalette";
 
 
 export default function ArtPieceDetail() {
@@ -25,7 +26,7 @@ export default function ArtPieceDetail() {
   if (!ArtPiece) {
     return <div>Art piece not found</div>;
   }
-  const { name, imageSource, artist, year, genre } = ArtPiece;
+  const { name, imageSource, artist, year, genre, colors } = ArtPiece;    //hier wird destructert
 
 
   return (
@@ -42,6 +43,8 @@ export default function ArtPieceDetail() {
         />
       </div>
       <div>
+        <ColorPalette colors={colors}   //komponente wird an colors übergeben(von ArtPiece),  über Props Attribut colors={colors}
+        />    
         <h2>{name}</h2>
        <br></br>
        <p>{artist}</p>
