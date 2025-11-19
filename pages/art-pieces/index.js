@@ -1,9 +1,13 @@
-import Preview from "@/components/Preview/Preview";
+import ArtPiecesList from "@/components/ArtPieces/ArtPiecesList";
 
-export default function ArtPieces() {
+export default function ArtPieces({ artPieces, onToggle, favoritesData }) {
   return (
-    <ul>
-      <Preview />
-    </ul>
+    <>
+      <ArtPiecesList
+        artPieces={artPieces}
+        onToggle={onToggle}
+        favoritesData={favoritesData}
+      />
+    </>
   );
 }

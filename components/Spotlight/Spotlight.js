@@ -1,43 +1,64 @@
 import Image from "next/image";
 import useSWR from "swr";
-import { SpotlightHeader, SpotlightImageContainer, SpotlightInfoBox, SpotlightInformationStyled, SpotlightPageWrapper, SpotlightStyledImage, } from "./SpotlightStyled";
+import {
+  SpotlightHeader,
+  SpotlightImageContainer,
+  SpotlightInfoBox,
+  SpotlightInformationStyled,
+  SpotlightPageWrapper,
+  SpotlightStyledImage,
+} from "./SpotlightStyled";
+import FavoriteButton from "../FavoriteButton/FavoriteButton";
+import { useEffect, useState } from "react";
 
-export default function Spotlight() {
-  const { data: artPieces, error } = useSWR(
-    "https://example-apis.vercel.app/api/art"
-  );
-  console.log("Art Pieces Log: ", artPieces);
+export default function Spotlight({ artPieces, favoritesData, onToggle }) {
+  //local state for randomArtPiece to not re-render everytime we use the favorites toggle
+  const [randomArtPiece, setRandomArtPiece] = useState(null);
 
-  if (error) return <div>Failed to load</div>;
-  if (!artPieces) return <div>Loading...</div>;
+  useEffect(() => {
+    if (artPieces?.length > 0) {
+      setRandomArtPiece(
+        artPieces[Math.floor(Math.random() * artPieces.length)]
+      );
+    }
+  }, [artPieces]);
 
-  function getRandomElement(array) {
-    return array[Math.floor(Math.random() * array.length)];
-  }
+  if (!randomArtPiece || artPieces.length === 0) return null;
 
-  const randomArtPiece = getRandomElement(artPieces);
-  console.log(randomArtPiece);
+  // const randomArtPiece = getRandomElement(artPieces);
+  // function getRandomElement(array) {
+  //   return array[Math.floor(Math.random() * array.length)];
+  // }
+
+  const slug = randomArtPiece.slug;
+  const isFavorite = favoritesData.includes(slug);
+
   return (
     <>
       <SpotlightHeader>
-      <h1>Art Gallery</h1>
-      </SpotlightHeader> 
-        <SpotlightPageWrapper>
-      <SpotlightImageContainer>
-      <SpotlightStyledImage
-        src={randomArtPiece.imageSource}
-        alt={randomArtPiece.name}
-        width={400}
-        height={500}
-        priority={true}
-      ></SpotlightStyledImage>
-      </SpotlightImageContainer>
-      <SpotlightInfoBox>
-      <h3>{randomArtPiece.artist}</h3>
-      <p>
-        <i>&quot;{randomArtPiece.name}&quot;</i>
-      </p>
-      </SpotlightInfoBox>
+        <h1>Art Gallery</h1>
+      </SpotlightHeader>
+      <SpotlightPageWrapper>
+        <SpotlightImageContainer>
+          <SpotlightStyledImage
+            src={randomArtPiece.imageSource}
+            alt={randomArtPiece.name}
+            width={400}
+            height={500}
+            priority={true}
+          ></SpotlightStyledImage>
+        </SpotlightImageContainer>
+        <SpotlightInfoBox>
+          <FavoriteButton
+            slug={slug}
+            onToggle={() => onToggle(slug)}
+            isFavorite={isFavorite}
+          />
+          <h3>{randomArtPiece.artist}</h3>
+          <p>
+            <i>&quot;{randomArtPiece.name}&quot;</i>
+          </p>
+        </SpotlightInfoBox>
       </SpotlightPageWrapper>
     </>
   );

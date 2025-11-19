@@ -1,6 +1,7 @@
 import GlobalStyle from "../styles";
-import { SWRConfig } from "swr";
-import Navigation from "@/components/Link";
+import useSWR, { SWRConfig } from "swr";
+import Navigation from "@/components/Navigation/Navigation";
+import useLocalStorageState from "use-local-storage-state";
 
 async function fetcher(url) {
   const response = await fetch(url);
@@ -9,10 +10,33 @@ async function fetcher(url) {
 }
 
 export default function App({ Component, pageProps }) {
+  const { data: artPieces, error } = useSWR(
+    "https://example-apis.vercel.app/api/art",
+    fetcher
+  );
+
+  const [favoritesData, setFavoritesData] = useLocalStorageState("favorites", {
+    defaultValue: [],
+  });
+
+  function handleFavoriteToggle(slug) {
+    setFavoritesData((prev) =>
+      prev.includes(slug) ? prev.filter((fav) => fav !== slug) : [...prev, slug]
+    );
+  }
+
+  if (error) return <div>Failed to load</div>;
+  if (!artPieces) return null;
+
   return (
     <SWRConfig value={{ fetcher }}>
       <GlobalStyle />
-      <Component {...pageProps} />
+      <Component
+        {...pageProps}
+        artPieces={artPieces}
+        favoritesData={favoritesData}
+        onToggle={handleFavoriteToggle}
+      />
       <Navigation />
     </SWRConfig>
   );

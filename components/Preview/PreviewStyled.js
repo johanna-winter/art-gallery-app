@@ -32,6 +32,7 @@ export const PreviewImageContainer = styled.div`
   justify-content: center;
   align-items: center;
   width: 100%;
+  position: relative;
 `;
 
 export const PreviewStyledImage = styled(Image)`
