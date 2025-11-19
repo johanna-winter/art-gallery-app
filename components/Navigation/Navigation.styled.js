@@ -2,7 +2,7 @@ import Link from "next/link";
 import styled from "styled-components";
 
 export const Nav = styled.nav`
-  background-color: darkseagreen;
+  background-color: #d3d3d3;
   color: #333;
   position: fixed;
   width: 100%;
@@ -12,7 +12,7 @@ export const Nav = styled.nav`
   @media (min-width: 768px) {
     height: 80px;
   }
-  border-top: solid 1px #343434ff;
+  border-top: solid 1px #333;
 `;
 
 export const NavList = styled.ul`
@@ -42,7 +42,8 @@ export const NavLink = styled(Link)`
   padding: 12px 0;
   width: 100%;
   height: 100%;
+  background-color: ${(props) => (props.$highlighted ? "#a9a9a9" : "#d3d3d3")};
   &:hover {
-    background-color: lightblue;
+    background-color: #a9a9a9;
   }
 `;
