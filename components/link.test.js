@@ -12,6 +12,15 @@ test("renders all navigation links", () => {
   expect(screen.getByText("Favorites")).toBeInTheDocument();
 });
 
+// Prüfe, die korrekte Anzahl der Links
+test("shows the correct number of navigation links", () => {
+    render(<Navigation />);
+    
+    const links = screen.getAllByRole("link");
+    
+    expect(links.length).toBe(3);
+  });
+
 
 
 /* 
