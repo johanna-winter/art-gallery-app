@@ -1,17 +1,20 @@
+import { CommentTitleStyled, NoCommentPart, OutputSectionStyled } from "./CommentOutputStyled";
+import { VertikalerStrich } from "./CommentsInputStyled";
 
 export default function CommentOutput ({comments}) {
     if (!comments || comments.length === 0) {
-    return <p>No Comments yet.</p>;
+    return <NoCommentPart>No Comments yet.</NoCommentPart>;
 }
 
 return(
     <>
-    <h2>Comments ({comments.length})</h2>
+    <VertikalerStrich></VertikalerStrich>
+    <CommentTitleStyled>Comments ({comments.length})</CommentTitleStyled>
     {comments.map((comment) => (
-        <div key={comment.id}>
-            <p>{comment.time}</p>
+        <OutputSectionStyled key={comment.id}>
             <p>{comment.text}</p>
-        </div>
+            <p>{comment.time}</p>
+        </OutputSectionStyled>
     ))}
     </>
 )}

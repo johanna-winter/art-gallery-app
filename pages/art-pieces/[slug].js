@@ -5,7 +5,9 @@ import useSWR from "swr";
 import CommentInputForm from "@/components/Comments/CommentsInput";
 import CommentOutput from "@/components/Comments/CommentsOutput";
 import { useState } from "react";
-import ColorPalette from "@/components/ColorPalette";
+import ColorPalette from "@/components/ColorPalette/ColorPalette";
+import { InfoBox, StyledPainting, PageWrapper, StyledImage, ImageContainer, InformationStyled, PaintingTitle } from "@/components/Layout/Layout.Styled";
+import { BackButton } from "@/components/Button/StyledButtons";
 
 
 
@@ -43,30 +45,33 @@ export default function ArtPieceDetail() {
 
   return (
     <>
+    <PageWrapper>
     <Link href="/art-pieces">
-      <button>Back</button>
+      <BackButton>Back</BackButton>
     </Link>
-      <div>
-        <Image
+    <ImageContainer>
+        <StyledImage
           src={imageSource}
           alt={`Painted by ${artist}`} 
           width={300}
           height={300}
-        />
-      </div>
-      <div>
+        ></StyledImage>
+        </ImageContainer>
+        
         <ColorPalette colors={colors} />
-        <h2>{name}</h2>
-       <br></br>
+         <InfoBox>
+        <PaintingTitle>{name}</PaintingTitle>
+       <p>by</p>
        <p>{artist}</p>
-      </div>
+      </InfoBox>
+        <InformationStyled>
       <div>{year}, {genre}</div>
-      <br>
-      </br>
+      </InformationStyled>
       <section>
         <CommentOutput comments={comments}></CommentOutput>
       </section>
       <CommentInputForm onAddComment={handleAddComment}></CommentInputForm>
+      </PageWrapper>
     </>
   );
 }
