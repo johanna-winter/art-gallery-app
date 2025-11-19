@@ -8,6 +8,7 @@ import { useState } from "react";
 import ColorPalette from "@/components/ColorPalette/ColorPalette";
 import { InfoBox, StyledPainting, PageWrapper, StyledImage, ImageContainer, InformationStyled, PaintingTitle } from "@/components/Layout/Layout.Styled";
 import { BackButton } from "@/components/Button/StyledButtons";
+import { VertikalerStrich } from "@/components/Comments/CommentsInputStyled";
 
 
 
@@ -67,11 +68,13 @@ export default function ArtPieceDetail() {
         <InformationStyled>
       <div>{year}, {genre}</div>
       </InformationStyled>
+      <VertikalerStrich/>
       <section>
         <CommentOutput comments={comments}></CommentOutput>
       </section>
       <CommentInputForm onAddComment={handleAddComment}></CommentInputForm>
       </PageWrapper>
+      <br/>
     </>
   );
 }

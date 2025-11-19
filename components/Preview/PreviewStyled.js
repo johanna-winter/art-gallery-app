@@ -1,27 +1,7 @@
 import styled from "styled-components";
 import Image from "next/image";
 
-export const StyledLayout = styled.div`
-background-color: #f8ebd1ff;
-display: flex;
-text-align: center;
-`;
 
-export default function Layout({ children }) {
-  return <StyledLayout>{children}</StyledLayout>;
-}
-
-
-
-
-export const PageWrapper = styled.div`
-  max-width: 900px;
-  padding: 3rem 1rem;
-  display: flex;
-  flex-direction: column;
-  gap: 2rem;
-  font-family: "Helvetica Neue", sans-serif;
-`;
 
 export const InfoBox = styled.div`
   text-align: center;
@@ -30,25 +10,36 @@ export const InfoBox = styled.div`
   font-size:1rem;
   font-style: italic;
   line-height:1rem;
-  box-shadow:0 2px 3px rgba(0, 0, 0, 0.2);
+  box-shadow:0 2px 3px rgba(0, 0, 0, 0.49);
 `;
-export const PaintingTitle = styled.h2`
+export const PreviewPaintingTitle = styled.h2`
 font-size:1.25rem;
-line-height:1.25rem;
+line-height:1rem;
 `;
 
+export const PreviewPageWrapper = styled.li`
+  max-width: 900px;
+  padding: 3rem 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  font-family: "Helvetica Neue", sans-serif;
+  list-style-type:none;
+  `;
 
-export const ImageContainer = styled.div`
+
+export const PreviewImageContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
   width: 100%;
 `;
 
-export const StyledImage = styled(Image)`
+export const PreviewStyledImage = styled(Image)`
   box-shadow: 0 10px 24px rgba(0, 0, 0, 0.2);
   border-radius: 8px;
   transition: box-shadow 0.3s ease, transform 0.3s ease;
+  
  
   &:hover {
     box-shadow: 0 12px 32px rgba(0, 0, 0, 0.3);
@@ -56,9 +47,10 @@ export const StyledImage = styled(Image)`
   }
 `;
 
-export const InformationStyled = styled.div`
+export const PreviewInformationStyled = styled.div`
   text-align: center;
-  padding:0%.5;
+  padding:-0.5rem;
+  line-height:5px;
   margin-bottom:2rem;
   font-style: italic;
   opacity: 0.6;

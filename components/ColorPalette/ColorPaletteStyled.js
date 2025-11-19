@@ -7,8 +7,8 @@ export const PaletteWrapper = styled.div`
   justify-content: center;
   align-items: center;
   margin-bottom: 2rem;
-  border:2px solid #cfc8c8ff;
-  border-radius:15px;
+  /* border:2px solid #cfc8c8ff;
+  border-radius:15px; */
 
 `;
 
