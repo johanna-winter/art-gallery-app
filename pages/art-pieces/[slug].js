@@ -2,10 +2,21 @@ import { useRouter } from "next/router";
 import Link from "next/link";
 import Image from "next/image";
 import useSWR from "swr";
-import FavoriteButton from "@/components/FavoriteButton";
+import FavoriteButton from "@/components/FavoriteButton/FavoriteButton";
 import CommentInputForm from "@/components/Comments/CommentsInput";
 import CommentOutput from "@/components/Comments/CommentsOutput";
-import ColorPalette from "@/components/ColorPalette";
+import ColorPalette from "@/components/ColorPalette/ColorPalette";
+import {
+  InfoBox,
+  StyledPainting,
+  PageWrapper,
+  StyledImage,
+  ImageContainer,
+  InformationStyled,
+  PaintingTitle,
+} from "@/components/Layout/Layout.Styled";
+import { BackButton } from "@/components/Button/StyledButtons";
+import { VertikalerStrich } from "@/components/Comments/CommentsInputStyled";
 import useLocalStorageState from "use-local-storage-state";
 
 export default function ArtPieceDetail({ onToggle, favoritesData }) {
@@ -47,39 +58,42 @@ export default function ArtPieceDetail({ onToggle, favoritesData }) {
 
   return (
     <>
-      <Link href="/art-pieces">
-        <button>Back</button>
-      </Link>
-      <div>
-        <Image
-          src={imageSource}
-          alt={`Painted by ${artist}`}
-          width={300}
-          height={300}
-        />
+      <PageWrapper>
+        <Link href="/art-pieces">
+          <BackButton>Back</BackButton>
+        </Link>
+        <ImageContainer>
+          <StyledImage
+            src={imageSource}
+            alt={`Painted by ${artist}`}
+            width={300}
+            height={300}
+          ></StyledImage>
+        </ImageContainer>
+
+        <ColorPalette colors={colors} />
+        <InfoBox>
+          <PaintingTitle>{name}</PaintingTitle>
+          <p>by</p>
+          <p>{artist}</p>
+        </InfoBox>
+        <InformationStyled>
+          <div>
+            {year}, {genre}
+          </div>
+        </InformationStyled>
+        <VertikalerStrich />
         <FavoriteButton
           slug={slug}
           onToggle={() => onToggle(slug)}
           isFavorite={isFavorite}
         />
-      </div>
-      <div>
-        <ColorPalette colors={colors} />
-        <h2>{name}</h2>
-        <br></br>
-        <p>{artist}</p>
-      </div>
-      <div>
-        {year}, {genre}
-      </div>
-      <div>
-        {year}, {genre}
-      </div>
-      <br></br>
-      <section>
-        <CommentOutput comments={comments}></CommentOutput>
-      </section>
-      <CommentInputForm onAddComment={handleAddComment}></CommentInputForm>
+        <section>
+          <CommentOutput comments={comments}></CommentOutput>
+        </section>
+        <CommentInputForm onAddComment={handleAddComment}></CommentInputForm>
+      </PageWrapper>
+      <br />
     </>
   );
 }

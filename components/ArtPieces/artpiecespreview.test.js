@@ -1,5 +1,5 @@
 import { render, screen } from "@testing-library/react";
-import ArtPiecesPreview from "@/components/ArtPiecesPreview";
+import ArtPiecesPreview from "@/components/ArtPieces/ArtPiecesPreview";
 
 test("renders title, artist and image", () => {
   render(

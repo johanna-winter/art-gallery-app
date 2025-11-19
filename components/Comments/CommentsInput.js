@@ -1,5 +1,7 @@
 import { useState } from "react";
-import Button from "../Button";
+import Button from "../Button/Button";
+import { FormStyled, InputStyled, TitleStyled, VertikalerStrich } from "./CommentsInputStyled";
+import { SendButton } from "../Button/StyledButtons";
 
 export default function CommentInputForm({ onAddComment }) {
 const [comment, setComment] = useState("");
@@ -22,15 +24,17 @@ const [comment, setComment] = useState("");
   }
 
   return (
-    <form onSubmit={handleSubmit}>
-      <h2>New Comment</h2>
+    <FormStyled>
+        <VertikalerStrich/>
+      <TitleStyled>New Comment</TitleStyled>
       <label htmlFor="comment"></label>
-      <input 
+      <InputStyled 
       type="text" 
       value={comment}
       placeholder="Add comment here..."
-      onChange={handleChange}></input>
-      <Button type="submit">Send</Button>
-    </form>
+      onChange={handleChange}></InputStyled>
+      <SendButton onClick={handleSubmit} type="submit">Send</SendButton>
+      <VertikalerStrich/>
+    </FormStyled>
   );
 }

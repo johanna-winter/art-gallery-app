@@ -1,4 +1,4 @@
-import ArtPiecesPreview from "@/components/ArtPiecesPreview";
+import ArtPiecesPreview from "@/components/ArtPieces/ArtPiecesPreview";
 
 export default function FavoritesList({ onToggle, artPieces, favoritesData }) {
   const favoriteArtPiecesList = artPieces.filter((artpiece) =>

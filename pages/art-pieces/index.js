@@ -1,4 +1,4 @@
-import ArtPiecesList from "@/components/ArtPiecesList";
+import ArtPiecesList from "@/components/ArtPieces/ArtPiecesList";
 
 export default function ArtPieces({ artPieces, onToggle, favoritesData }) {
   return (

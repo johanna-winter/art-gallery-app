@@ -1,5 +1,5 @@
 import { render, screen } from "@testing-library/react";
-import ArtPiecesList from "@/components/ArtPiecesList";
+import ArtPiecesList from "@/components/ArtPieces/ArtPiecesList";
 
 test("renders a list of ArtPiecesPreview components", () => {
   render(<ArtPiecesList artPieces={mockArtPieces} />);
