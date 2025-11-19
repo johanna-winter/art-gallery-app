@@ -1,7 +1,7 @@
 import GlobalStyle from "../styles";
 import useSWR, { SWRConfig } from "swr";
 import Navigation from "@/components/Navigation";
-import { useState } from "react";
+import useLocalStorageState from "use-local-storage-state";
 
 async function fetcher(url) {
   const response = await fetch(url);
@@ -15,7 +15,9 @@ export default function App({ Component, pageProps }) {
     fetcher
   );
 
-  const [favoritesData, setFavoritesData] = useState([]);
+  const [favoritesData, setFavoritesData] = useLocalStorageState("favorites", {
+    defaultValue: [],
+  });
 
   function handleFavoriteToggle(slug) {
     setFavoritesData((prev) =>
