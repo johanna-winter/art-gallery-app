@@ -14,12 +14,13 @@ import {
   ImageContainer,
   InformationStyled,
   PaintingTitle,
+  DetailContainerFavoriteButtonStyled,
 } from "@/components/Layout/Layout.Styled";
 import { BackButton } from "@/components/Button/StyledButtons";
 import { VertikalerStrich } from "@/components/Comments/CommentsInputStyled";
 import useLocalStorageState from "use-local-storage-state";
 
-export default function ArtPieceDetail({ onToggle, favoritesData }) {
+export default function ArtPieceDetail({ onToggle, favoritesData, }) {
   const router = useRouter();
   const { slug } = router.query;
 
@@ -56,6 +57,9 @@ export default function ArtPieceDetail({ onToggle, favoritesData }) {
 
   const { name, imageSource, artist, year, genre, colors } = ArtPiece;
 
+  
+  const filteredComments = comments.filter(comment => comment.slug === slug);
+
   return (
     <>
       <PageWrapper>
@@ -69,8 +73,14 @@ export default function ArtPieceDetail({ onToggle, favoritesData }) {
             width={300}
             height={300}
           ></StyledImage>
+          <DetailContainerFavoriteButtonStyled>
+            <FavoriteButton
+          slug={slug}
+          onToggle={() => onToggle(slug)}
+          isFavorite={isFavorite}
+        />
+          </DetailContainerFavoriteButtonStyled>
         </ImageContainer>
-
         <ColorPalette colors={colors} />
         <InfoBox>
           <PaintingTitle>{name}</PaintingTitle>
@@ -83,15 +93,10 @@ export default function ArtPieceDetail({ onToggle, favoritesData }) {
           </div>
         </InformationStyled>
         <VertikalerStrich />
-        <FavoriteButton
-          slug={slug}
-          onToggle={() => onToggle(slug)}
-          isFavorite={isFavorite}
-        />
         <section>
-          <CommentOutput comments={comments}></CommentOutput>
+          <CommentOutput comments={filteredComments}></CommentOutput>
         </section>
-        <CommentInputForm onAddComment={handleAddComment}></CommentInputForm>
+        <CommentInputForm onAddComment={handleAddComment} slug={slug}></CommentInputForm>
       </PageWrapper>
       <br />
     </>

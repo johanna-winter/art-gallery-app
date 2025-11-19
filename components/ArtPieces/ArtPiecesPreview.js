@@ -1,8 +1,9 @@
 import Image from "next/image";
 import Link from "next/link";
-import { PreviewImageContainer, PreviewInformationStyled, PreviewStyledImage } from "../Preview/PreviewStyled";
+import { ContainerFavoriteButtonStyled, PreviewImageContainer, PreviewInformationStyled, PreviewPageWrapper, PreviewStyledImage } from "../Preview/PreviewStyled";
 import { VertikalerStrich } from "../Comments/CommentsInputStyled";
 import FavoriteButton from "../FavoriteButton/FavoriteButton";
+import { FavoriteButtonContainer } from "../FavoriteButton/FavoriteButtonStyled";
 
 export default function ArtPiecesPreview({
   artist,
@@ -16,11 +17,8 @@ export default function ArtPiecesPreview({
 
   return (
     <>
-      <PreviewImageContainer>
-        <FavoriteButton
-        slug={slug}
-        onToggle={() => onToggle(slug)}
-        isFavorite={isFavorite}/>
+      <PreviewPageWrapper>
+       <PreviewImageContainer>
         <Link href={`/art-pieces/${slug}`}>
         <PreviewStyledImage 
         src={image} 
@@ -28,7 +26,14 @@ export default function ArtPiecesPreview({
         width={300} 
         height={300} ></PreviewStyledImage>
       </Link>
-       </PreviewImageContainer>
+      <ContainerFavoriteButtonStyled>
+      <FavoriteButton
+        slug={slug}
+        onToggle={() => onToggle(slug)}
+        isFavorite={isFavorite}/>
+        </ContainerFavoriteButtonStyled> 
+        </PreviewImageContainer>
+       </PreviewPageWrapper>
       <PreviewInformationStyled>
       <h4>{title}</h4>
       <p>{artist}</p>

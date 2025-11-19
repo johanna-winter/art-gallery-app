@@ -1,6 +1,7 @@
 import Image from "next/image";
 import useSWR from "swr";
 import {
+  SpotlightFavoriteButtonStyled,
   SpotlightHeader,
   SpotlightImageContainer,
   SpotlightInfoBox,
@@ -10,6 +11,7 @@ import {
 } from "./SpotlightStyled";
 import FavoriteButton from "../FavoriteButton/FavoriteButton";
 import { useEffect, useState } from "react";
+import { ContainerFavoriteButtonStyled, FavoriteButtonStyled } from "../FavoriteButton/FavoriteButtonStyled";
 
 export default function Spotlight({ artPieces, favoritesData, onToggle }) {
   //local state for randomArtPiece to not re-render everytime we use the favorites toggle
@@ -47,13 +49,16 @@ export default function Spotlight({ artPieces, favoritesData, onToggle }) {
             height={500}
             priority={true}
           ></SpotlightStyledImage>
-        </SpotlightImageContainer>
-        <SpotlightInfoBox>
+       
+       <SpotlightFavoriteButtonStyled>
           <FavoriteButton
             slug={slug}
             onToggle={() => onToggle(slug)}
             isFavorite={isFavorite}
           />
+           </SpotlightFavoriteButtonStyled>
+          </SpotlightImageContainer>
+           <SpotlightInfoBox>
           <h3>{randomArtPiece.artist}</h3>
           <p>
             <i>&quot;{randomArtPiece.name}&quot;</i>

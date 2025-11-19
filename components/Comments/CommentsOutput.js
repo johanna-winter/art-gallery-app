@@ -11,7 +11,7 @@ return(
     <VertikalerStrich></VertikalerStrich>
     <CommentTitleStyled>Comments ({comments.length})</CommentTitleStyled>
     {comments.map((comment) => (
-        <OutputSectionStyled key={comment.id}>
+        <OutputSectionStyled key={comment.slug}>
             <p>{comment.text}</p>
             <p>{comment.time}</p>
         </OutputSectionStyled>

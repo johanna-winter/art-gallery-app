@@ -1,4 +1,5 @@
 import ArtPiecesPreview from "@/components/ArtPieces/ArtPiecesPreview";
+import { PreviewPageWrapper } from "@/components/Preview/PreviewStyled";
 
 export default function FavoritesList({ onToggle, artPieces, favoritesData }) {
   const favoriteArtPiecesList = artPieces.filter((artpiece) =>
@@ -10,7 +11,7 @@ export default function FavoritesList({ onToggle, artPieces, favoritesData }) {
       <ul>
         {favoriteArtPiecesList.map((artpiece) => {
           return (
-            <li key={artpiece.slug}>
+            <PreviewPageWrapper key={artpiece.slug}>
               <ArtPiecesPreview
                 artist={artpiece.artist}
                 title={artpiece.name}
@@ -19,7 +20,7 @@ export default function FavoritesList({ onToggle, artPieces, favoritesData }) {
                 onToggle={onToggle}
                 favorites={favoritesData}
               />
-            </li>
+            </PreviewPageWrapper>
           );
         })}
       </ul>
