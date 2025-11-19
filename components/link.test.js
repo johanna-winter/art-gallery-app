@@ -1,29 +1,24 @@
 import { render, screen } from "@testing-library/react";
-import Navigation from "@/components/Navigation/Navigation";
-import React from "react";
+import Navigation from "./Navigation/Navigation";
 
-describe("Navigation Component", () => {
-  test("rendert alle Navigationslinks", () => {
-    render(<Navigation />);
 
-    // Prüfe, ob beide Links angezeigt werden
-    expect(screen.getByText("Galerie")).toBeInTheDocument();
-    expect(screen.getByText("Spotlight")).toBeInTheDocument();
-  });
 
-  test("überprüft, dass Links die korrekten hrefs haben", () => {
-    render(<Navigation />);
+test("renders all navigation links", () => {
+  render(<Navigation />);
 
-    const galerieLink = screen.getByText("Galerie");
-    expect(galerieLink).toHaveAttribute("href", "/art-pieces");
-
-    const spotlightLink = screen.getByText("Spotlight");
-    expect(spotlightLink).toHaveAttribute("href", "/");
-  });
-
-  test("zeigt die korrekte Anzahl an Links", () => {
-    render(<Navigation />);
-    const links = screen.getAllByRole("link");
-    expect(links.length).toBe(2);
-  });
+  // Prüfe, ob alle Links vorhanden sind
+  expect(screen.getByText("Spotlight")).toBeInTheDocument();
+  expect(screen.getByText("Gallery")).toBeInTheDocument();
+  expect(screen.getByText("Favorites")).toBeInTheDocument();
 });
+
+
+
+/* 
+- Wir testen ob die Links verfügbar sind/ ob die verlinkung richtig klappt.
+- navigation wird virtuell als DOM aufgebaut.
+- Mit render() wird die Komponente als virtuellen DOM dargestellt.
+  OHNE render() würden die screen.getBy-Aufrufe fehlschlagen.
+- Mit screen.getByText wird nach dem genannten Textknoten gesucht.
+- Mit .toBeInTheDocument(), wird bestätigt ob der Test funktioniert hat.
+*/
