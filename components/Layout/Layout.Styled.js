@@ -15,7 +15,6 @@ export default function Layout({ children }) {
 
 
 export const PageWrapper = styled.div`
-  max-width: 900px;
   padding: 3rem 1rem;
   display: flex;
   flex-direction: column;
@@ -31,6 +30,7 @@ export const InfoBox = styled.div`
   font-style: italic;
   line-height:1rem;
   box-shadow:0 2px 3px rgba(0, 0, 0, 0.2);
+  opacity:0.6;
 `;
 export const PaintingTitle = styled.h2`
 font-size:1.25rem;
@@ -46,24 +46,26 @@ export const ImageContainer = styled.div`
 `;
 
 export const StyledImage = styled(Image)`
-  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.7);
   border-radius: 8px;
   transition: box-shadow 0.3s ease, transform 0.3s ease;
  
   &:hover {
-    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.9);
     transform: translateY(-4px);
   }
 `;
 
 export const InformationStyled = styled.div`
   text-align: center;
-  padding:0%.5;
-  margin-bottom:2rem;
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+  margin: 0 auto 2rem auto;
   font-style: italic;
   opacity: 0.6;
-   border:2px solid #b3b3b3ff;
-  border-radius:15px;
-  box-shadow:0 2px 2px rgba(0, 0, 0, 0.2);
-  
+  max-width: 55rem;
+  border: 2px solid #b3b3b3ff;
+  border-radius: 15px;
+  box-shadow: 0 2px 2px rgba(0, 0, 0, 0.2);
 `;

@@ -1,5 +1,6 @@
 import Image from "next/image";
 import useSWR from "swr";
+import { SpotlightHeader, SpotlightImageContainer, SpotlightInfoBox, SpotlightInformationStyled, SpotlightPageWrapper, SpotlightStyledImage, } from "./SpotlightStyled";
 
 export default function Spotlight() {
   const { data: artPieces, error } = useSWR(
@@ -18,18 +19,26 @@ export default function Spotlight() {
   console.log(randomArtPiece);
   return (
     <>
+      <SpotlightHeader>
       <h1>Art Gallery</h1>
-      <Image
+      </SpotlightHeader> 
+        <SpotlightPageWrapper>
+      <SpotlightImageContainer>
+      <SpotlightStyledImage
         src={randomArtPiece.imageSource}
         alt={randomArtPiece.name}
         width={400}
         height={500}
         priority={true}
-      ></Image>
+      ></SpotlightStyledImage>
+      </SpotlightImageContainer>
+      <SpotlightInfoBox>
       <h3>{randomArtPiece.artist}</h3>
       <p>
         <i>&quot;{randomArtPiece.name}&quot;</i>
       </p>
+      </SpotlightInfoBox>
+      </SpotlightPageWrapper>
     </>
   );
 }

@@ -17,7 +17,7 @@ export const OutputSectionStyled = styled.div`
   padding: 1rem;
   border-radius: 8px;
   border: 1px solid #ccc;
-  font-size: 1rem;
+  font-size: 0.8;
   margin-bottom: 1rem;
  max-width: 100%;
   word-wrap: break-word;
