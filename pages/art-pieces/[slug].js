@@ -5,15 +5,16 @@ import useSWR from "swr";
 import FavoriteButton from "@/components/FavoriteButton";
 import CommentInputForm from "@/components/Comments/CommentsInput";
 import CommentOutput from "@/components/Comments/CommentsOutput";
-import { useState } from "react";
 import ColorPalette from "@/components/ColorPalette";
-
+import useLocalStorageState from "use-local-storage-state";
 
 export default function ArtPieceDetail({ onToggle, favoritesData }) {
   const router = useRouter();
   const { slug } = router.query;
-  
-  const [comments, setComments] = useState([]);
+
+  const [comments, setComments] = useLocalStorageState("comments", {
+    defaultValue: [],
+  });
 
   const {
     data: artPieces,
@@ -22,7 +23,7 @@ export default function ArtPieceDetail({ onToggle, favoritesData }) {
   } = useSWR("https://example-apis.vercel.app/api/art");
 
   const handleAddComment = (newComment) => {
-    console.log("Received Comment ID:", newComment.id); 
+    console.log("Received Comment ID:", newComment.id);
     setComments([...comments, newComment]);
   };
 
@@ -46,9 +47,9 @@ export default function ArtPieceDetail({ onToggle, favoritesData }) {
 
   return (
     <>
-    <Link href="/art-pieces">
-      <button>Back</button>
-    </Link>
+      <Link href="/art-pieces">
+        <button>Back</button>
+      </Link>
       <div>
         <Image
           src={imageSource}
@@ -71,9 +72,10 @@ export default function ArtPieceDetail({ onToggle, favoritesData }) {
       <div>
         {year}, {genre}
       </div>
-      <div>{year}, {genre}</div>
-      <br>
-      </br>
+      <div>
+        {year}, {genre}
+      </div>
+      <br></br>
       <section>
         <CommentOutput comments={comments}></CommentOutput>
       </section>
