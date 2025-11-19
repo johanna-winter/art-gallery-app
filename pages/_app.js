@@ -1,6 +1,6 @@
 import GlobalStyle from "../styles";
 import useSWR, { SWRConfig } from "swr";
-import Navigation from "@/components/Navigation";
+import Navigation from "@/components/Navigation/Navigation";
 import useLocalStorageState from "use-local-storage-state";
 
 async function fetcher(url) {

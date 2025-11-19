@@ -1,7 +1,6 @@
 import { render, screen } from "@testing-library/react";
-import Navigation from "@/components/Navigation";
+import Navigation from "@/components/Navigation/Navigation";
 import React from "react";
-
 
 describe("Navigation Component", () => {
   test("rendert alle Navigationslinks", () => {
@@ -12,9 +11,7 @@ describe("Navigation Component", () => {
     expect(screen.getByText("Spotlight")).toBeInTheDocument();
   });
 
-
-
-test("überprüft, dass Links die korrekten hrefs haben", () => {
+  test("überprüft, dass Links die korrekten hrefs haben", () => {
     render(<Navigation />);
 
     const galerieLink = screen.getByText("Galerie");
@@ -24,9 +21,7 @@ test("überprüft, dass Links die korrekten hrefs haben", () => {
     expect(spotlightLink).toHaveAttribute("href", "/");
   });
 
-
-
-test("zeigt die korrekte Anzahl an Links", () => {
+  test("zeigt die korrekte Anzahl an Links", () => {
     render(<Navigation />);
     const links = screen.getAllByRole("link");
     expect(links.length).toBe(2);
