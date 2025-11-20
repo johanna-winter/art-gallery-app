@@ -41,9 +41,13 @@ test("renders a list of ArtPiecesPreview components", () => {
   expect(screen.getByText("Test One")).toBeInTheDocument();
   expect(screen.getByText("Test Two")).toBeInTheDocument();
 
-  // Prüfe images
+  // Prüfe images - 1 Image pro Art Piece + 1 FavoriteButton pro Art Piece = 4 insgesamt
   const images = screen.getAllByRole("img");
-  expect(images).toHaveLength(2);
+  expect(images).toHaveLength(2); // Nur 2 Images, da nur 2 Art Pieces
+
+  // Prüfe ob Links vorhanden sind
+  const links = screen.getAllByRole("link");
+  expect(links).toHaveLength(2); // Ein Link pro Art Piece
 });
 /* 
 - Der Test testet, ob ArtPiecesList die Liste korrekt rendert.

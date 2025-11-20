@@ -9,19 +9,21 @@ const [comment, setComment] = useState("");
   function handleSubmit(event) {
     event.preventDefault();
     
+
+    //funktion um Kommentar hinzuzufügen
     onAddComment({
-        id: `${slug}-${crypto.randomUUID()}`,
-        slug: slug,
-        text: comment,
+        id: `${slug}-${crypto.randomUUID()}`, //Es wird ein String erstellt aus slug und randomUUID der eine einzigartige ID wiedergibt
+        slug: slug,  //ArtPiece slug für Filterung
+        text: comment, // Der eingegebene Text
         time: new Date().toLocaleDateString([], {hour:"2-digit", minute:"2-digit"}),
         
     });
-    setComment("")
+    setComment("")    //Input-Feld leeren nach Submit
     
 
   }
   function handleChange (event) {
-    setComment(event.target.value)
+    setComment(event.target.value)    // Aktualisiert State bei jeder Eingabe
   }
 
   return (

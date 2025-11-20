@@ -13,16 +13,15 @@ export default function ArtPiecesList({ artPieces, onToggle, favoritesData }) {
   return (
     <PreviewContainerUL>
       {artPieces.map((artPiece) => (
-        <PreviewPageWrapper key={artPiece.slug}>
-          <ArtPiecesPreview
-            artist={artPiece.artist}
-            title={artPiece.name}
-            image={artPiece.imageSource}
-            slug={artPiece.slug}
-            onToggle={onToggle}
-            favorites={favoritesData}
-          />
-        </PreviewPageWrapper>
+        <ArtPiecesPreview
+          key={artPiece.slug}
+          artist={artPiece.artist}
+          title={artPiece.name}
+          image={artPiece.imageSource}
+          slug={artPiece.slug}
+          onToggle={onToggle}
+          favorites={favoritesData}
+        />
       ))}
     </PreviewContainerUL>
   );
