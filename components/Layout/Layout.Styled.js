@@ -41,8 +41,6 @@ line-height:1.25rem;
 export const ImageContainer = styled.div`
   display: flex;
   justify-content: center;
-  align-items: center;
-  width: 100%;
 `;
 
 export const StyledImage = styled(Image)`
@@ -54,6 +52,11 @@ export const StyledImage = styled(Image)`
     box-shadow: 0 12px 32px rgba(0, 0, 0, 0.9);
     transform: translateY(-4px);
   }
+`;
+export const DetailContainerFavoriteButtonStyled = styled.div`
+  position:relative;
+  top: 5px;
+  left: -50px;
 `;
 
 export const InformationStyled = styled.div`

@@ -18,21 +18,20 @@ line-height:1rem;
 `;
 
 export const PreviewPageWrapper = styled.li`
-  padding: 3rem 1rem;
+   padding: 0 1rem;
   display: flex;
   flex-direction: column;
   gap: 2rem;
   font-family: "Helvetica Neue", sans-serif;
-  list-style-type:none;
-  `;
+  margin-bottom:5rem;
+`;
 
 
 export const PreviewImageContainer = styled.div`
   display: flex;
   justify-content: center;
-  align-items: center;
-  width: 100%;
-  position: relative;
+  
+ 
 `;
 
 export const PreviewStyledImage = styled(Image)`
@@ -47,6 +46,12 @@ export const PreviewStyledImage = styled(Image)`
   }
 `;
 
+export const ContainerFavoriteButtonStyled = styled.div`
+  position:relative;
+  top: 5px;
+  left: -50px;
+`;
+
 export const PreviewInformationStyled = styled.div`
   text-align: center;
   padding:-0.5rem;
@@ -58,4 +63,8 @@ export const PreviewInformationStyled = styled.div`
   border-radius:15px;
   box-shadow:0 2px 2px rgba(0, 0, 0, 0.2);
   
+`;
+
+export const PreviewContainerUL =styled.ul`
+padding: 0;
 `;

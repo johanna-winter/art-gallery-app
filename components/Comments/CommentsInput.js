@@ -3,14 +3,15 @@ import Button from "../Button/Button";
 import { FormStyled, InputStyled, TitleStyled, VertikalerStrich } from "./CommentsInputStyled";
 import { SendButton } from "../Button/StyledButtons";
 
-export default function CommentInputForm({ onAddComment }) {
+export default function CommentInputForm({ onAddComment, slug }) {
 const [comment, setComment] = useState("");
 
   function handleSubmit(event) {
     event.preventDefault();
     
     onAddComment({
-        id: crypto.randomUUID(),
+        id: `${slug}-${crypto.randomUUID()}`,
+        slug: slug,
         text: comment,
         time: new Date().toLocaleDateString([], {hour:"2-digit", minute:"2-digit"}),
         
