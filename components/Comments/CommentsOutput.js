@@ -2,7 +2,7 @@ import { CommentTitleStyled, NoCommentPart, OutputSectionStyled } from "./Commen
 import { VertikalerStrich } from "./CommentsInputStyled";
 
 export default function CommentOutput ({comments}) {
-    if (!comments || comments.length === 0) {
+    if (!comments || comments.length === 0) {     //wenn der die Anzahl der gleich 0 ist
     return <NoCommentPart>No Comments yet.</NoCommentPart>;
 }
 
@@ -11,10 +11,10 @@ return(
     <VertikalerStrich></VertikalerStrich>
     <CommentTitleStyled>Comments ({comments.length})</CommentTitleStyled>
     {comments.map((comment) => (
-        <OutputSectionStyled key={comment.slug}>
+        <OutputSectionStyled key={comment.slug}>     
             <p>{comment.text}</p>
             <p>{comment.time}</p>
         </OutputSectionStyled>
     ))}
     </>
-)}
+)}// Erstellt neue Kommentare
