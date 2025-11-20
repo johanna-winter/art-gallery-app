@@ -1,5 +1,5 @@
 import ArtPiecesPreview from "@/components/ArtPieces/ArtPiecesPreview";
-import { PreviewPageWrapper } from "@/components/Preview/PreviewStyled";
+import { PreviewPageWrapper } from "@/components/ArtPieces/Layout/PreviewStyled";
 
 export default function FavoritesList({ onToggle, artPieces, favoritesData }) {
   const favoriteArtPiecesList = artPieces.filter((artpiece) =>

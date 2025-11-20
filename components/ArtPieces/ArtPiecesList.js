@@ -1,5 +1,4 @@
 import ArtPiecesPreview from "@/components/ArtPieces/ArtPiecesPreview";
-import { VertikalerStrich } from "../Comments/CommentsInputStyled";
 import {
   PreviewContainerUL,
   PreviewImageContainer,
@@ -7,9 +6,8 @@ import {
   PreviewPageWrapper,
   PreviewPaintingTitle,
   PreviewStyledImage,
-} from "../Preview/PreviewStyled";
+} from "./Layout/PreviewStyled";
 import Link from "next/link";
-
 
 export default function ArtPiecesList({ artPieces, onToggle, favoritesData }) {
   return (
